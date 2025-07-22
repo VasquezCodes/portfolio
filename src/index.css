@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables globales para modo claro/oscuro */
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #0f172a;
+    --text-light: #0f172a;
+    --text-dark: #f1f5f9;
+    --accent: #6366f1;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    @apply m-0 p-0 font-sans bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+}
+
+a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+}
+
+button {
+    @apply px-4 py-2 rounded-md font-medium bg-zinc-800 text-white dark:bg-zinc-200 dark:text-black transition hover:bg-zinc-700 dark:hover:bg-zinc-300;
+}
