@@ -4,7 +4,7 @@ import SectionWrapper from "../components/SectionWrapper";
 export default function SobreMi() {
     return (
         <SectionWrapper>
-        <section className="px-6 py-12 max-w-6xl mx-auto">
+            <section className="bg-[#f5f2e7] dark:bg-[#0a0a0a] text-[#2e2e2e] dark:text-white px-6 py-12 max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-blue-600 mb-10">Sobre mí</h2>
 
             <div className="flex flex-col md:flex-row items-center md:items-start gap-10">

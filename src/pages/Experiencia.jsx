@@ -46,7 +46,7 @@ export default function Experiencia() {
 
     return (
         <SectionWrapper>
-            <section className="px-6 py-12 max-w-6xl mx-auto">
+            <section className="bg-slate-50 dark:bg-[#0a0a0a] px-6 py-12 max-w-6xl mx-auto text-gray-800 dark:text-white">
                 <h2 className="text-3xl font-bold text-blue-600 mb-10">Experiencia</h2>
 
                 <ol className="relative border-l border-gray-300 dark:border-gray-700">

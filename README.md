@@ -1,12 +1,52 @@
-# React + Vite
+# Portfolio Web - Roberto Vasquez
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio técnico como **Desarrollador Backend**, orientado a destacar mi experiencia real con APIs, automatización, redes y dispositivos embebidos.
 
-Currently, two official plugins are available:
+## 📁 Estructura del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── context/
+│   ├── layouts/
+│   ├── pages/
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** + **React Router DOM**
+- **TailwindCSS**
+- **Framer Motion** para animaciones
+- **Lucide-react** para íconos técnicos
+- **Typewriter** animado
+- Diseño responsive y optimizado
+
+## 🧩 Secciones incluidas
+
+- `Home`: introducción personal, comandos técnicos animados
+- `Sobre mí`: perfil profesional y stack principal
+- `Experiencia`: historial laboral y técnico con toggle de detalle
+- `Proyectos`: cards colapsables con enlaces a repos
+- `Contacto`: accesos rápidos y correo directo
+- `Navbar` y `Footer` personalizados con estética terminal
+
+## 🛠 Instalación local
+
+```bash
+git clone https://github.com/robertovasquez/portfolio-backend.git
+cd portfolio-backend
+npm install
+npm run dev
+```
+
+---
+
+© 2025 Roberto Vasquez · Todos los derechos reservados.

@@ -4,7 +4,7 @@ import SectionWrapper from "../components/SectionWrapper";
 export default function Contacto() {
     return (
         <SectionWrapper>
-        <section className="px-6 py-12 max-w-xl mx-auto text-center">
+            <section className="bg-slate-50 dark:bg-[#0a0a0a] px-6 py-12 max-w-xl mx-auto text-center text-gray-800 dark:text-white">
             <h2 className="text-3xl font-bold text-blue-600 mb-6">Contacto</h2>
 
             <p className="text-gray-700 dark:text-gray-300 mb-6">

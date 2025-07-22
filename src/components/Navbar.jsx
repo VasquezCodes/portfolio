@@ -2,6 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 const enlaces = [
     { nombre: "Inicio", ruta: "/" },
@@ -26,11 +29,13 @@ export default function Navbar() {
         setMenuAbierto(false);
     }, [pathname]);
 
+    const { darkMode, setDarkMode } = useContext(ThemeContext);
+
     return (
         <header
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
                 scrolling
-                    ? "bg-white/90 dark:bg-gray-900/90 shadow"
+                    ? "bg-slate-50/90 dark:bg-gray-900/90 shadow"
                     : "bg-transparent"
             } backdrop-blur-md`}
         >
