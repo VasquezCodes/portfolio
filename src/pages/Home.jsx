@@ -2,26 +2,24 @@ import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import SectionWrapper from "../components/SectionWrapper";
 import heroImg from "../assets/undraw_dev-environment_n5by.svg";
-import TerminalBackground from "../components/TerminalBackground";
 
 export default function Home() {
     return (
-        <SectionWrapper>
-            <section className="relative px-6 sm:px-10 py-16 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
-                {/* Consola de fondo */}
-                <TerminalBackground/>
+        <SectionWrapper className="bg-[#0a0a0a] text-white min-h-screen flex items-center justify-center px-4 sm:px-10 pt-32">
+            <section className="max-w-7xl w-full flex flex-col-reverse md:flex-row items-center gap-16">
                 {/* Texto principal */}
-                <div className="flex-1 text-center md:text-left relative z-10">
+                <div className="flex-1 text-center md:text-left">
                     <motion.h1
-                        className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4"
+                        className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
                         Hola, soy Roberto 👋
                     </motion.h1>
+
                     <motion.p
-                        className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-4"
+                        className="text-lg sm:text-xl text-gray-300 mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -29,20 +27,19 @@ export default function Home() {
                         Desarrollador Backend con experiencia en Java, .NET, Node.js, Python y redes con MikroTik.
                     </motion.p>
 
-                    {/* Consola animada */}
+                    {/* Comando animado */}
                     <motion.p
-                        className="text-md sm:text-lg text-gray-500 dark:text-gray-400 font-mono h-[30px] sm:h-[36px] mb-6"
+                        className="font-mono text-green-400 drop-shadow-md text-lg sm:text-xl h-[30px] sm:h-[36px] mb-6"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 1 }}
                     >
                         <Typewriter
                             words={[
-                                "npm run backend",
-                                "curl http://localhost:8080/api/data",
-                                "ping microtv.router.lan",
-                                "ssh admin@192.168.1.1",
-                                "system reboot force"
+                                "curl http://localhost:8080/api/data_",
+                                "ping microtv.router.lan_",
+                                "ssh admin@192.168.1.1_",
+                                "system reboot force_",
                             ]}
                             loop={0}
                             cursor
@@ -58,7 +55,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-start gap-4 justify-center"
+                        className="flex justify-center md:justify-start"
                     >
                         <a
                             href="/RobertoVasquez-CV.pdf"
@@ -71,9 +68,9 @@ export default function Home() {
                     </motion.div>
                 </div>
 
-                {/* Imagen / Ilustración */}
+                {/* Imagen técnica derecha */}
                 <motion.div
-                    className="flex-1 relative z-10"
+                    className="flex-1"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
