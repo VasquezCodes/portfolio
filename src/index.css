@@ -13,7 +13,7 @@
 }
 
 body {
-    @apply m-0 p-0 font-sans bg-[#f5f2e7] text-[#2e2e2e] dark:bg-gray-900 dark:text-gray-100;
+    @apply m-0 p-0 font-sans bg-black text-gray-100;
 }
 
 a {

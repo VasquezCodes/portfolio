@@ -26,7 +26,7 @@ export default function TerminalBackground() {
     return (
         <div className="absolute inset-y-0 right-0 z-0 pointer-events-none flex items-start justify-end pr-4 sm:pr-10 pt-24">
             <div
-                className="text-green-500 font-mono text-base sm:text-lg opacity-10 leading-6 whitespace-pre-wrap text-right"
+                className="text-green-500 font-mono text-base sm:text-lg opacity-20 leading-6 whitespace-pre-wrap text-right"
                 style={{
                     maxWidth: "50ch",
                 }}
