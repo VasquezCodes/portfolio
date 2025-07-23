@@ -11,7 +11,7 @@ export default function Home() {
         <SectionWrapper className="relative bg-gradient-to-b from-[#0a0a0a] via-[#0d0d0d] to-black text-white min-h-screen flex items-center justify-center px-4 sm:px-10 pt-32">
             <TerminalBackground />
 
-            <section className="relative z-10 max-w-7xl w-full flex justify-center">
+            <section className="max-w-7xl w-full flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
                 <div className="flex flex-col-reverse md:flex-row items-center gap-16 bg-white/5 backdrop-blur-sm border border-white/10 transition-shadow shadow-lg rounded-2xl p-6 md:p-10 md:px-12 w-full duration-300 ease-in-out">
 
                     {/* Texto principal */}
