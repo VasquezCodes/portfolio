@@ -1,7 +1,17 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import {
-    TerminalSquare, Cpu, Network, Database, Code2, FileCode2, GraduationCap, Globe, BookOpenCheck
+    TerminalSquare,
+    Cpu,
+    Network,
+    Database,
+    Code2,
+    FileCode2,
+    GraduationCap,
+    Globe,
+    BookOpenCheck,
+    CupSoda,
+    UsersRound
 } from "lucide-react";
 import PageTransition from "../components/PagesTransition.jsx";
 
