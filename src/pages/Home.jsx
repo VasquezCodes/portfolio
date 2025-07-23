@@ -5,9 +5,11 @@ import TerminalBackground from "../components/TerminalBackground";
 import { Link } from "react-router-dom";
 import heroImg from "../assets/undraw_dev-environment_n5by.svg";
 import { Github, Linkedin, ArrowRight } from "lucide-react";
+import PageTransition from "../components/PagesTransition.jsx";
 
 export default function Home() {
     return (
+        <PageTransition>
         <SectionWrapper className="relative bg-gradient-to-b from-[#0a0a0a] via-[#0d0d0d] to-black text-white min-h-screen flex items-center justify-center px-4 sm:px-10 pt-32">
             <TerminalBackground />
 
@@ -66,7 +68,7 @@ export default function Home() {
                             className="flex flex-wrap justify-center md:justify-start gap-4"
                         >
                             <a
-                                href="https://github.com/robertovasquez-dev"
+                                href="https://github.com/VasquezCodes?tab=repositories"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-5 py-2 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition inline-flex items-center gap-2"
@@ -75,7 +77,7 @@ export default function Home() {
                             </a>
 
                             <a
-                                href="https://www.linkedin.com/in/robertovasquez-dev"
+                                href="https://www.linkedin.com/in/roberto-vasquez-404729241/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-5 py-2 border border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition inline-flex items-center gap-2"
@@ -112,5 +114,6 @@ export default function Home() {
                 </div>
             </section>
         </SectionWrapper>
+        </PageTransition>
     );
 }

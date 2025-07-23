@@ -2,6 +2,8 @@ import { Briefcase, ServerCog, Database, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import SectionWrapper from "../components/SectionWrapper";
+import PageTransition from "../components/PagesTransition";
+
 
 const experiencias = [
     {
@@ -57,6 +59,7 @@ export default function Experiencia() {
     const [expandido, setExpandido] = useState(null);
 
     return (
+        <PageTransition>
         <SectionWrapper className="bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white min-h-screen px-4 sm:px-10 pt-32 font-mono">
             <div className="max-w-5xl mx-auto">
                 <motion.h2
@@ -140,5 +143,6 @@ export default function Experiencia() {
                 </div>
             </div>
         </SectionWrapper>
+        </PageTransition>
     );
 }

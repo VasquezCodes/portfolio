@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import { ServerCog, Code2, ShieldCheck } from "lucide-react";
+import PageTransition from "../components/PagesTransition.jsx";
 
 const proyectos = [
     {
@@ -31,6 +32,7 @@ const proyectos = [
 
 export default function Proyectos() {
     return (
+        <PageTransition>
         <SectionWrapper className="bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white min-h-screen px-4 sm:px-10 pt-32 font-mono">
             <motion.h2
                 className="text-green-400 text-2xl mb-10 flex items-center gap-2"
@@ -111,5 +113,6 @@ export default function Proyectos() {
                 </motion.div>
             </div>
         </SectionWrapper>
+        </PageTransition>
     );
 }
