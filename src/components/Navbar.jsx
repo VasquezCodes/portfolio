@@ -33,7 +33,7 @@ export default function Navbar() {
             }`}
         >
             <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                {/* Logo con ícono */}
+                {/* Logo siempre verde terminal */}
                 <Link
                     to="/"
                     className="flex items-center text-lg font-mono font-bold text-green-400 hover:text-green-300 transition"
@@ -43,10 +43,10 @@ export default function Navbar() {
                 </Link>
 
                 {/* Menú desktop */}
-                <ul className="hidden md:flex gap-6 text-sm font-mono font-medium text-gray-300">
+                <ul className="hidden md:flex gap-6 text-sm font-mono font-medium">
                     {enlaces.map((enlace) => (
                         <li key={enlace.ruta} className="relative pl-4">
-                            {/* Línea verde animada al costado izquierdo del texto */}
+                            {/* Línea animada izquierda si está activo */}
                             {pathname === enlace.ruta && (
                                 <motion.span
                                     layoutId="link-active"
@@ -58,13 +58,13 @@ export default function Navbar() {
                             )}
                             <Link
                                 to={enlace.ruta}
-                                className={`hover:text-green-400 transition-colors ${
-                                    pathname === enlace.ruta ? "text-green-400" : ""
+                                className={`transition-colors ${
+                                    pathname === enlace.ruta
+                                        ? "text-green-400"
+                                        : "text-blue-500 hover:text-green-300"
                                 }`}
                             >
-                                ./{
-                                enlace.nombre
-                            }
+                                ./{enlace.nombre}
                             </Link>
                         </li>
                     ))}
@@ -92,13 +92,13 @@ export default function Navbar() {
                             <li key={enlace.ruta} className="py-3 border-b border-zinc-700">
                                 <Link
                                     to={enlace.ruta}
-                                    className={`block hover:text-green-400 transition-colors ${
-                                        pathname === enlace.ruta ? "text-green-400" : ""
+                                    className={`block transition-colors ${
+                                        pathname === enlace.ruta
+                                            ? "text-green-400"
+                                            : "text-zinc-400 hover:text-green-300"
                                     }`}
                                 >
-                                    ./{
-                                    enlace.nombre
-                                }
+                                    ./{enlace.nombre}
                                 </Link>
                             </li>
                         ))}

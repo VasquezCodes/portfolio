@@ -10,7 +10,7 @@ export default function Contacto() {
     const [abriendoCV, setAbriendoCV] = useState(false);
 
     const copiarEmail = () => {
-        navigator.clipboard.writeText("robertovasquez.dev@gmail.com");
+        navigator.clipboard.writeText("robertojesusvasquez@gmail.com");
         setCopiado(true);
         setTimeout(() => setCopiado(false), 2000);
     };
@@ -56,33 +56,33 @@ export default function Contacto() {
                                 onClick={copiarEmail}
                                 className="hover:underline text-white"
                             >
-                                robertovasquez.dev@gmail.com
+                                robertojesusvasquez@gmail.com
                             </button>
                         </li>
                         <li className="flex items-center gap-3">
                             <Phone className="text-green-400 w-5 h-5" />
-                            <span className="text-white">+54 9 11 1234 5678</span>
+                            <span className="text-white">+54 9 11 3609 3041</span>
                         </li>
                         <li className="flex items-center gap-3">
                             <Github className="text-green-400 w-5 h-5" />
                             <a
-                                href="https://github.com/robertovasquez-dev"
+                                href="https://github.com/VasquezCodes"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:underline text-white"
                             >
-                                github.com/robertovasquez-dev
+                                github.com/VasquezCodes
                             </a>
                         </li>
                         <li className="flex items-center gap-3">
                             <Linkedin className="text-green-400 w-5 h-5" />
                             <a
-                                href="https://www.linkedin.com/in/robertovasquez-dev"
+                                href="https://www.linkedin.com/in/roberto-vasquez-404729241/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:underline text-white"
                             >
-                                linkedin.com/in/robertovasquez-dev
+                                linkedin.com/in/robertovasquez
                             </a>
                         </li>
                     </ul>
@@ -98,7 +98,7 @@ export default function Contacto() {
                             exit={{ opacity: 0, y: 40 }}
                             transition={{ duration: 0.3 }}
                         >
-                            📋 Email copiado al portapapeles
+                           &gt; 📋 Email copiado al portapapeles
                         </motion.div>
                     )}
 

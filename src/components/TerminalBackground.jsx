@@ -8,7 +8,6 @@ const comandos = [
     "> top | head -n 5",
     "> ping -c 4 192.168.0.10",
     "> curl https://api.internal.local/status",
-    "> journalctl -xe | grep error",
     "> docker ps -a",
     "> htop",
 ];
