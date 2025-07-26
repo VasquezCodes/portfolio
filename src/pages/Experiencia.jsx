@@ -4,7 +4,7 @@ import {
     Code2,
     ChevronsUpDown,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import { useState } from "react";
 import PageTransition from "../components/PagesTransition.jsx";
@@ -29,6 +29,7 @@ const experiencias = [
             label: "Ver esquema lógico",
             href: "#",
         },
+        imagen: "/images/microtv.gif",
     },
     {
         empresa: "Proyecto académico — Ingeniería de Datos",
@@ -48,6 +49,7 @@ const experiencias = [
             label: "Ver ER + scripts",
             href: "#",
         },
+        imagen: "/images/sql-diagram.gif",
     },
     {
         empresa: "Proyecto personal",
@@ -67,11 +69,14 @@ const experiencias = [
             label: "Ver repo",
             href: "https://github.com/robertovasquez-dev",
         },
+        imagen: "/images/todo.gif",
     },
 ];
 
 export default function Experiencia() {
     const [expandido, setExpandido] = useState(null);
+
+    const imagenActiva = expandido !== null ? experiencias[expandido].imagen : null;
 
     return (
         <PageTransition>
@@ -85,71 +90,92 @@ export default function Experiencia() {
                     &gt; experiencia
                 </motion.h2>
 
-                <div className="space-y-8 max-w-5xl">
-                    {experiencias.map((exp, i) => (
-                        <motion.div
-                            key={i}
-                            className={`relative border-l-4 rounded-r-xl border-green-500 bg-neutral-950 p-6 shadow-lg hover:shadow-green-500/10 transition-all duration-300`}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                        >
-                            <div className="flex items-start justify-between mb-3">
-                                <div className="flex gap-3 items-center">
-                                    {exp.icono}
-                                    <div>
-                                        <p className="text-base sm:text-lg font-bold text-white">{exp.empresa}</p>
-                                        <p className="text-sm text-gray-400">{exp.rol} · {exp.fecha}</p>
-                                    </div>
-                                </div>
-                                <button
-                                    className="text-xs flex items-center gap-1 bg-zinc-800 hover:bg-green-500 hover:text-black text-gray-200 px-3 py-1 rounded transition-all"
-                                    onClick={() => setExpandido(expandido === i ? null : i)}
-                                >
-                                    <ChevronsUpDown className="w-3 h-3" />
-                                    {expandido === i ? "menos" : "más"}
-                                </button>
-                            </div>
-
-                            <p className="text-gray-300 text-sm sm:text-base">{exp.descripcionCorta}</p>
-
-                            {expandido === i && (
-                                <>
-                                    <ul className="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside pl-2">
-                                        {exp.descripcionLarga.map((linea, idx) => (
-                                            <li key={idx}>{linea}</li>
-                                        ))}
-                                    </ul>
-
-                                    {/* Tecnologías */}
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {exp.tecnologias.map((tech, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="text-xs border border-green-400 text-green-300 px-2 py-0.5 rounded-full font-mono bg-black/40"
-                                            >
-                        {tech}
-                      </span>
-                                        ))}
-                                    </div>
-
-                                    {/* Referencia */}
-                                    {exp.referencia && (
-                                        <div className="mt-4">
-                                            <a
-                                                href={exp.referencia.href}
-                                                className="inline-block px-4 py-1 text-sm border border-green-400 text-green-400 rounded hover:bg-green-400 hover:text-black transition"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                {exp.referencia.label}
-                                            </a>
+                <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+                    {/* Cards de experiencia */}
+                    <div className="w-full lg:w-2/3 space-y-8">
+                        {experiencias.map((exp, i) => (
+                            <motion.div
+                                key={i}
+                                className="relative border-l-4 rounded-r-xl border-green-500 bg-neutral-950 p-6 shadow-lg hover:shadow-green-500/10 transition-all duration-300"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                            >
+                                <div className="flex items-start justify-between mb-3">
+                                    <div className="flex gap-3 items-center">
+                                        {exp.icono}
+                                        <div>
+                                            <p className="text-base sm:text-lg font-bold text-white">{exp.empresa}</p>
+                                            <p className="text-sm text-gray-400">{exp.rol} · {exp.fecha}</p>
                                         </div>
-                                    )}
-                                </>
+                                    </div>
+                                    <button
+                                        className="text-xs flex items-center gap-1 bg-zinc-800 hover:bg-green-500 hover:text-black text-gray-200 px-3 py-1 rounded transition-all"
+                                        onClick={() => setExpandido(expandido === i ? null : i)}
+                                    >
+                                        <ChevronsUpDown className="w-3 h-3" />
+                                        {expandido === i ? "menos" : "más"}
+                                    </button>
+                                </div>
+
+                                <p className="text-gray-300 text-sm sm:text-base">{exp.descripcionCorta}</p>
+
+                                {expandido === i && (
+                                    <>
+                                        <ul className="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside pl-2">
+                                            {exp.descripcionLarga.map((linea, idx) => (
+                                                <li key={idx}>{linea}</li>
+                                            ))}
+                                        </ul>
+
+                                        {/* Tecnologías */}
+                                        <div className="mt-4 flex flex-wrap gap-2">
+                                            {exp.tecnologias.map((tech, idx) => (
+                                                <span
+                                                    key={idx}
+                                                    className="text-xs border border-green-400 text-green-300 px-2 py-0.5 rounded-full font-mono bg-black/40"
+                                                >
+                          {tech}
+                         </span>
+                                            ))}
+                                        </div>
+
+                                        {/* Referencia */}
+                                        {exp.referencia && (
+                                            <div className="mt-4">
+                                                <a
+                                                    href={exp.referencia.href}
+                                                    className="inline-block px-4 py-1 text-sm border border-green-400 text-green-400 rounded hover:bg-green-400 hover:text-black transition"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {exp.referencia.label}
+                                                </a>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Imagen lateral animada según experiencia */}
+                    <div className="hidden lg:block w-full lg:w-1/3 flex justify-center">
+                        <AnimatePresence mode="wait">
+                            {imagenActiva && (
+                                <motion.img
+                                    key={imagenActiva}
+                                    src={imagenActiva}
+                                    alt="Ilustración de experiencia"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="w-full max-w-sm rounded-xl border border-green-500 shadow-lg shadow-green-500/10"
+                                />
                             )}
-                        </motion.div>
-                    ))}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </SectionWrapper>
         </PageTransition>
