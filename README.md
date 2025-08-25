@@ -1,6 +1,6 @@
 # Portfolio Web - Roberto Vasquez
 
-Portfolio técnico como **Desarrollador Backend**, orientado a destacar mi experiencia real con APIs, automatización, redes y dispositivos embebidos.
+Portfolio técnico como **Desarrollador Fullstack**, orientado a destacar mi experiencia con React, Node.js, APIs y automatización.
 
 ## 📁 Estructura del proyecto
 
@@ -23,9 +23,10 @@ Portfolio técnico como **Desarrollador Backend**, orientado a destacar mi exper
 ## 🚀 Tecnologías utilizadas
 
 - **React** + **React Router DOM**
-- **TailwindCSS**
+- **Node.js** + **Express** para API básica
+- **TailwindCSS** (glassmorphism morado/azul)
 - **Framer Motion** para animaciones
-- **Lucide-react** para íconos técnicos
+- **Lucide-react** para íconos
 - **Typewriter** animado
 - Diseño responsive y optimizado
 
@@ -36,7 +37,7 @@ Portfolio técnico como **Desarrollador Backend**, orientado a destacar mi exper
 - `Experiencia`: historial laboral y técnico con toggle de detalle
 - `Proyectos`: cards colapsables con enlaces a repos
 - `Contacto`: accesos rápidos y correo directo
-- `Navbar` y `Footer` personalizados con estética terminal
+- `Navbar` y `Footer` con estilo glassmorphism
 
 ## 🛠 Instalación local
 
