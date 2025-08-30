@@ -1,41 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Variables globales para modo claro/oscuro */
+/* Dark Theme Design System Variables */
 :root {
-    --bg-light: #ffffff;
-    --bg-dark: #0f172a;
-    --text-light: #0f172a;
-    --text-dark: #f1f5f9;
-    --accent: #6366f1;
-    font-family: 'Inter', sans-serif;
+    /* Colors - Dark theme */
+    --color-primary: #3b82f6;      /* Bright blue for dark bg */
+    --color-secondary: #94a3b8;    /* Light gray */
+    --color-accent: #06b6d4;       /* Cyan accent */
+    
+    /* Backgrounds */
+    --bg-primary: #0f172a;         /* Dark navy */
+    --bg-secondary: #1e293b;       /* Slightly lighter navy */
+    --bg-dark: #020617;            /* Very dark */
+    --bg-card: #1e293b;            /* Card background */
+    
+    /* Borders */
+    --border-light: #334155;       /* Dark gray border */
+    --border-primary: #475569;     /* Medium gray border */
+    
+    /* Text */
+    --text-primary: #f1f5f9;       /* Light text */
+    --text-secondary: #cbd5e1;     /* Medium light text */
+    --text-muted: #64748b;         /* Muted text */
+    --text-white: #ffffff;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+/* Remove old data-theme styles since we're using dark as default */
+
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 body {
-
-    @apply m-0 p-0 font-sans text-white;
-    background: radial-gradient(circle at 20% 20%, rgba(168,85,247,0.25), transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(96,165,250,0.25), transparent 40%),
-                #0f172a;
-    background-attachment: fixed;
-
-    @apply m-0 p-0 font-sans bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white;
-
+    @apply m-0 p-0 overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg;
+/* Clean Card System */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
 }
 
-a {
-    @apply hover:underline;
+.card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-primary);
 }
 
+.card-elevated {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.card-elevated:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Clean Button System */
+.btn-primary {
+    @apply px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors duration-200;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    @apply px-6 py-3 bg-transparent hover:bg-slate-700 text-slate-300 font-medium rounded-lg border border-slate-600 transition-all duration-200;
+    cursor: pointer;
+}
+
+/* Dark theme button styles are now default */
+
+.btn-ghost {
+    @apply px-4 py-2 bg-transparent hover:bg-slate-800 text-slate-400 font-medium rounded-lg transition-colors duration-200;
+    border: none;
+    cursor: pointer;
+}
+
+/* Typography System */
 h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
 }
 
-button {
-    @apply px-4 py-2 rounded-md font-medium bg-zinc-800 text-white dark:bg-zinc-200 dark:text-black transition hover:bg-zinc-700 dark:hover:bg-zinc-300;
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+/* Minimal Animations */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Clean Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+.link-subtle {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.link-subtle:hover {
+    color: var(--text-primary);
+}
+
+/* Custom Scrollbar - Minimal */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Text Selection */
+::selection {
+    background: rgb(37 99 235 / 0.2);
+    color: var(--text-primary);
+}
+
+/* Focus States */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Status Indicator */
+.status-dot {
+    @apply w-2 h-2 rounded-full;
+}
+
+.status-online {
+    @apply bg-green-500;
+}
+
+.status-busy {
+    @apply bg-yellow-500;
+}
+
+.status-offline {
+    @apply bg-gray-400;
+}
+
+/* Dividers */
+.divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 1.5rem 0;
+}
+
+/* Code Blocks */
+.code-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Code blocks are now dark by default */
+
+/* Remove all glow effects and excessive animations */
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
 }

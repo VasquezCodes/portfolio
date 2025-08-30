@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import SectionWrapper from "../components/SectionWrapper";
 import {
     TerminalSquare,
@@ -6,154 +7,314 @@ import {
     Network,
     Database,
     Code2,
-    FileCode2,
     GraduationCap,
     Globe,
-    BookOpenCheck,
     CupSoda,
-    UsersRound
+    UsersRound,
+    Star,
+    Award,
+    Target,
+    Zap,
+    Brain,
+    Heart
 } from "lucide-react";
 import PageTransition from "../components/PagesTransition.jsx";
 
 export default function SobreMi() {
+    const heroRef = useRef(null);
+    const skillsRef = useRef(null);
+    const educationRef = useRef(null);
+    
+    const heroInView = useInView(heroRef, { once: true, threshold: 0.3 });
+    const skillsInView = useInView(skillsRef, { once: true, threshold: 0.2 });
+    const educationInView = useInView(educationRef, { once: true, threshold: 0.2 });
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const techStack = [
+        { icon: TerminalSquare, label: "APIs REST", color: "text-primary-400", level: 90 },
+        { icon: Code2, label: "Java + Spring Boot", color: "text-orange-400", level: 85 },
+        { icon: Cpu, label: "Node.js + Express", color: "text-green-400", level: 88 },
+        { icon: Database, label: "SQL (MySQL, SQL Server)", color: "text-blue-400", level: 80 },
+        { icon: Network, label: "Linux & DevOps", color: "text-purple-400", level: 75 },
+        { icon: Zap, label: "Python Automation", color: "text-yellow-400", level: 82 }
+    ];
+
+    const strengths = [
+        {
+            icon: Brain,
+            title: "Automatización Inteligente",
+            description: "Scripts bash y Python para optimizar procesos",
+            color: "text-purple-400"
+        },
+        {
+            icon: Target,
+            title: "Backend Escalable",
+            description: "Soluciones orientadas a rendimiento y escalabilidad",
+            color: "text-blue-400"
+        },
+        {
+            icon: Network,
+            title: "Infraestructura de Red",
+            description: "Experiencia real con WDS, túneles y bridges",
+            color: "text-green-400"
+        },
+        {
+            icon: Heart,
+            title: "Código de Calidad",
+            description: "Documentación clara y código mantenible",
+            color: "text-red-400"
+        }
+    ];
+
+    const education = [
+        {
+            icon: Code2,
+            skill: "POO (Programación Orientada a Objetos)",
+            course: "Paradigmas y Algoritmos II",
+            color: "text-purple-400"
+        },
+        {
+            icon: Database,
+            skill: "SQL - Consultas, modelado y normalización",
+            course: "Ingeniería de Datos I",
+            color: "text-blue-400"
+        },
+        {
+            icon: CupSoda,
+            skill: "Java - Backend estructurado y algoritmos",
+            course: "Paradigmas y Algoritmos II",
+            color: "text-orange-400"
+        },
+        {
+            icon: UsersRound,
+            skill: "Scrum - Roles, sprints, retrospectivas",
+            course: "Testing de Aplicaciones",
+            color: "text-green-400"
+        },
+        {
+            icon: Network,
+            skill: "APIs REST - Diseño y consumo de endpoints",
+            course: "Algoritmos III / Aplicaciones Interactivas",
+            color: "text-indigo-400"
+        }
+    ];
+
     return (
         <PageTransition>
-        <SectionWrapper className="text-white min-h-screen px-6 sm:px-10 pt-40 pb-32 flex items-start justify-center">
-            <section className="w-full max-w-5xl">
-
-                {/* Encabezado */}
-                <motion.h2
-                    className="text-purple-300 text-xl mb-2"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                >
-                    Sobre mí
-                </motion.h2>
-
-                {/* Intro técnica */}
-                <motion.p
-                    className="text-indigo-100 text-base sm:text-lg leading-relaxed mb-12"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    Soy <span className="font-semibold">desarrollador backend</span> con experiencia real en el desarrollo de APIs REST, automatización de tareas con Python, infraestructura de redes y administración de bases de datos relacionales.
-                    Trabajo con stacks como <span className="text-purple-300">Java + Spring Boot</span>, <span className="text-blue-300">Node.js</span>, y uso <span className="text-indigo-300">Linux</span> como entorno de trabajo diario.
-                </motion.p>
-
-                {/* Tech stack grid */}
-                <motion.div
-                    className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-16"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    transition={{ staggerChildren: 0.1 }}
-                >
-                    {[
-                        { icon: <TerminalSquare className="text-purple-300 w-6 h-6" />, label: "APIs REST" },
-                        { icon: <Code2 className="text-indigo-300 w-6 h-6" />, label: "Java + Spring Boot" },
-                        { icon: <Cpu className="text-blue-300 w-6 h-6" />, label: "Node.js + Express" },
-                        { icon: <Database className="text-pink-300 w-6 h-6" />, label: "SQL (MySQL, SQL Server)" },
-                    ].map(({ icon, label }, idx) => (
+            <div className="min-h-screen bg-slate-900">
+                <SectionWrapper className="px-6 sm:px-10 pt-28 pb-20">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Hero Section */}
                         <motion.div
-                            key={idx}
-                            className="flex items-center gap-3 glass p-3 rounded-lg hover:border-purple-400 transition"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            ref={heroRef}
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate={heroInView ? "visible" : "hidden"}
+                            className="text-center mb-20"
                         >
-                            {icon}
-                            <span className="text-sm">{label}</span>
+                            <motion.div variants={itemVariants} className="mb-8">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-sm font-medium mb-6 text-slate-300">
+                                    <Star className="w-4 h-4 text-yellow-500" />
+                                    Desarrollador Fullstack
+                                </div>
+                                
+                                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-white">
+                                    <span className="text-gradient">Sobre</span> <span className="text-white">Mí</span>
+                                </h1>
+                                
+                                <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                                    Desarrollador <span className="text-primary-600 font-semibold">backend especializado</span> en crear 
+                                    APIs robustas, automatizar procesos y diseñar arquitecturas escalables
+                                </p>
+                            </motion.div>
                         </motion.div>
-                    ))}
-                </motion.div>
 
-                {/* Diferenciales */}
-                <motion.div
-                    className="glass rounded-xl p-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                    <p className="text-purple-300 mb-2">Mi diferencial</p>
-                    <ul className="list-disc list-inside text-indigo-100 text-base leading-relaxed">
-                        <li>Automatizo tareas con scripts bash o Python</li>
-                        <li>Diseño soluciones backend orientadas a rendimiento y escalabilidad</li>
-                        <li>Manejo infraestructura de red real (WDS, túneles, bridges)</li>
-                        <li>Documentación clara, código mantenible y enfoque técnico real</li>
-                    </ul>
-                </motion.div>
+                        {/* Technical Skills */}
+                        <motion.div
+                            ref={skillsRef}
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate={skillsInView ? "visible" : "hidden"}
+                            className="mb-20"
+                        >
+                            <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-12 text-white">
+                                <span className="text-gradient">Stack</span> Técnico
+                            </motion.h2>
+                            
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                                {techStack.map((tech, index) => {
+                                    const Icon = tech.icon;
+                                    return (
+                                        <motion.div
+                                            key={tech.label}
+                                            variants={itemVariants}
+                                            className="card p-6 hover:shadow-lg transition-all duration-300"
+                                        >
+                                            <div className="flex items-center gap-4 mb-4">
+                                                <div className="p-3 bg-slate-700 rounded-xl border border-slate-600">
+                                                    <Icon className={`w-6 h-6 ${tech.color}`} />
+                                                </div>
+                                                <h3 className="font-semibold text-white">{tech.label}</h3>
+                                            </div>
+                                            
+                                            {/* Progress bar */}
+                                            <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
+                                                <motion.div
+                                                    className={`h-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600`}
+                                                    initial={{ width: 0 }}
+                                                    animate={skillsInView ? { width: `${tech.level}%` } : { width: 0 }}
+                                                    transition={{ duration: 1.5, delay: index * 0.2 }}
+                                                />
+                                            </div>
+                                            <span className="text-sm text-slate-300">{tech.level}% experiencia</span>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </motion.div>
 
-                {/* Idiomas */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="mt-8 p-6 glass rounded-xl"
-                >
-                    <h3 className="text-purple-300 text-base mb-4 flex items-center gap-2">
-                        <Globe className="w-4 h-4" />
-                        Idiomas
-                    </h3>
+                        {/* Strengths */}
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, threshold: 0.2 }}
+                            className="mb-20"
+                        >
+                            <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-12 text-white">
+                                <span className="text-gradient">Mis</span> Fortalezas
+                            </motion.h2>
+                            
+                            <div className="grid md:grid-cols-2 gap-8">
+                                {strengths.map((strength) => {
+                                    const Icon = strength.icon;
+                                    return (
+                                        <motion.div
+                                            key={strength.title}
+                                            variants={itemVariants}
+                                            className="card p-8 hover:shadow-lg transition-all duration-300"
+                                        >
+                                            <div className="flex items-start gap-4">
+                                                <div className={`p-3 bg-slate-700 rounded-xl border border-slate-600`}>
+                                                    <Icon className={`w-6 h-6 ${strength.color}`} />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-white mb-2">{strength.title}</h3>
+                                                    <p className="text-slate-300 leading-relaxed">{strength.description}</p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </motion.div>
 
-                    <ul className="text-sm sm:text-base text-indigo-100 space-y-1 list-disc list-inside pl-2">
-                        <li><span className="font-semibold text-white">Español:</span> Nativo</li>
-                        <li><span className="font-semibold text-white">Inglés:</span> Avanzado (verbal y escrito)</li>
-                    </ul>
-                </motion.div>
+                        {/* Languages & Education Grid */}
+                        <div className="grid lg:grid-cols-2 gap-12">
+                            {/* Languages */}
+                            <motion.div
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, threshold: 0.3 }}
+                                className="card p-8"
+                            >
+                                <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
+                                    <Globe className="w-6 h-6 text-blue-500" />
+                                    <span className="text-gradient">Idiomas</span>
+                                </motion.h3>
+                                
+                                <div className="space-y-4">
+                                    <motion.div variants={itemVariants} className="flex justify-between items-center">
+                                        <span className="text-white font-semibold">Español</span>
+                                        <div className="flex gap-1">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                    <motion.div variants={itemVariants} className="flex justify-between items-center">
+                                        <span className="text-white font-semibold">Inglés</span>
+                                        <div className="flex gap-1">
+                                            {[...Array(4)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                                            ))}
+                                            <Star className="w-4 h-4 text-gray-400" />
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
 
-                {/* Educación */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
-                    className="mt-16 p-6 glass rounded-xl"
-                >
-                    <motion.h3
-                        className="text-purple-300 text-base mb-4 flex items-center gap-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.3, duration: 0.5 }}
-                    >
-                        <GraduationCap className="w-4 h-4" />
-                        Educación
-                    </motion.h3>
-
-                    <p className="text-white font-semibold mb-2">
-                        🎓 Tecnicatura Universitaria en Desarrollo de Software
-                    </p>
-                    <p className="text-indigo-200 text-sm mb-6">
-                        UADE – Ingreso 2024 · Graduación esperada: 2026
-                    </p>
-
-                    {/* Conceptos clave aprendidos con íconos */}
-                      <div className="text-sm sm:text-base text-indigo-100 space-y-3 mt-6">
-                          <div className="flex items-start gap-3">
-                              <Code2 className="text-purple-300 w-5 h-5 mt-0.5" />
-                              <p><span className="text-white font-semibold">POO:</span> Paradigma orientado a objetos — <span className="text-indigo-200">Paradigmas y Algoritmos II</span></p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                              <Database className="text-pink-300 w-5 h-5 mt-0.5" />
-                              <p><span className="text-white font-semibold">SQL:</span> Consultas, modelado y normalización — <span className="text-indigo-200">Ingeniería de Datos I</span></p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                              <CupSoda className="text-blue-300 w-5 h-5 mt-0.5" />
-                              <p><span className="text-white font-semibold">Java:</span> Backend estructurado y algoritmos — <span className="text-indigo-200">Paradigmas y Algoritmos II</span></p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                              <UsersRound className="text-indigo-300 w-5 h-5 mt-0.5" />
-                              <p><span className="text-white font-semibold">Scrum:</span> Roles, sprints, retrospectivas — <span className="text-indigo-200">Testing de Aplicaciones</span></p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                              <Network className="text-purple-300 w-5 h-5 mt-0.5" />
-                              <p><span className="text-white font-semibold">APIs REST:</span> Diseño y consumo de endpoints — <span className="text-indigo-200">Algoritmos III / Aplicaciones Interactivas</span></p>
-                          </div>
-                      </div>
-
-                </motion.div>
-
-            </section>
-        </SectionWrapper>
+                            {/* Education */}
+                            <motion.div
+                                ref={educationRef}
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate={educationInView ? "visible" : "hidden"}
+                                className="card p-8"
+                            >
+                                <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
+                                    <GraduationCap className="w-6 h-6 text-purple-500" />
+                                    <span className="text-gradient">Educación</span>
+                                </motion.h3>
+                                
+                                <motion.div variants={itemVariants} className="mb-6">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <Award className="w-5 h-5 text-yellow-500" />
+                                        <h4 className="text-lg font-bold text-white">
+                                            Tecnicatura Universitaria en Desarrollo de Software
+                                        </h4>
+                                    </div>
+                                    <p className="text-slate-300 ml-8">
+                                        UADE • 2024 - 2026 (en curso)
+                                    </p>
+                                </motion.div>
+                                
+                                <div className="space-y-3">
+                                    {education.map((item) => {
+                                        const Icon = item.icon;
+                                        return (
+                                            <motion.div
+                                                key={item.skill}
+                                                variants={itemVariants}
+                                                className="flex gap-3 p-3 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors"
+                                            >
+                                                <Icon className={`w-4 h-4 mt-1 ${item.color}`} />
+                                                <div className="text-sm">
+                                                    <span className="text-white font-semibold">{item.skill}</span>
+                                                    <p className="text-slate-300">{item.course}</p>
+                                                </div>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </SectionWrapper>
+            </div>
         </PageTransition>
     );
 }
